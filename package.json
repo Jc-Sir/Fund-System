@@ -1,0 +1,16 @@
+{
+    "name": "fundmanage",
+    "version": "1.0.0",
+    "description": "A FundManagement System",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "server": "nodemon server.js"
+    },
+    "author": "hjc",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^5.8.0"
+    }
+}

@@ -3,18 +3,12 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
+const passport = require('passport')
 const gravatar = require('gravatar');
-const keys = require('../../config/config')
+const keys = require('../../config/config');
 
 
 const User = require('../../models/User') //引入数据模型
-
-// $route  api/users/test
-// @desc   返回请求的json数据
-// access  public 公有接口
-router.get("/test", (req, res) => {
-    res.json({ msg: 'login works' })
-})
 
 // $router post api/users/register
 // @desc   注册
@@ -76,7 +70,7 @@ router.post("/login", (req, res) => {
                             if (err) throw err;
                             res.json({
                                 success: true,
-                                token: token
+                                token: "Bearer " + token
                             })
                         })
                         // res.json({ msg: 'success' });
@@ -86,6 +80,12 @@ router.post("/login", (req, res) => {
             });
         }
     )
+})
+
+
+// 使用令牌获取数据
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.json({ id: req.user.id, name: req.user.name, email: req.user.email })
 })
 
 

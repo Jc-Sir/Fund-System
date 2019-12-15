@@ -25,6 +25,38 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res)
     })
 })
 
+// @router  Post 
+// @desc  edit infomation
+// @access private
+router.post('/edit/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const ProfileFields = {};
+    if (req.body.type) ProfileFields.type = req.body.type;
+    if (req.body.decribe) ProfileFields.decribe = req.body.decribe;
+    if (req.body.income) ProfileFields.income = req.body.income;
+    if (req.body.expand) ProfileFields.expand = req.body.expand;
+    if (req.body.cash) ProfileFields.cash = req.body.cash;
+    if (req.body.remark) ProfileFields.remark = req.body.remark;
+
+    Profile.findOneAndUpdate({ _id: req.params.id }, { $set: ProfileFields }, { new: true })
+        .then(profile => {
+            res.json(profile)
+        })
+})
+
+// @router  Post 
+// @desc  delete infomation
+// @access private
+router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Profile.findOneAndRemove({ _id: req.params.id })
+        .then(profile => {
+            profile.save().then(profile => {
+                res.json(profile)
+            })
+        }).catch(err => {
+            res.status(400).json(err)
+        })
+})
+
 // @router  get 
 // @desc   get all information
 // @access private

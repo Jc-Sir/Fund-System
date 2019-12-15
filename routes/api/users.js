@@ -1,8 +1,8 @@
 // for register & login
-
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const gravatar = require('gravatar');
 
 
 const User = require('../../models/User') //引入数据模型
@@ -24,10 +24,11 @@ router.post("/register", (req, res) => {
             if (user) {
                 return res.status(400).json({ email: '邮箱已经被注册' })
             } else {
+                const avatar = gravatar.url(req.body.email, { s: '200', r: 'pg', d: 'mm' });
                 const newUser = new User({
                     name: req.body.name,
                     email: req.body.email,
-                    avatar: req.body.email,
+                    avatar,
                     password: req.body.password
                 });
                 bcrypt.genSalt(10, function(err, salt) {
@@ -50,5 +51,32 @@ router.post("/register", (req, res) => {
             }
         })
 })
+
+
+// $router post api/users/login
+// @desc   登录  返回token jwt passport
+// access public
+router.post("/login", (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    // 查库
+    User.findOne({ email }).then(
+        user => {
+            if (!user) {
+                return res.status(404).json({ email: '用户不存在！' });
+            }
+            // 匹配密码
+            bcrypt.compare(password, user.password).then(isMatch => {
+                if (isMatch) {
+                    res.json({ msg: 'success' });
+                } else {
+                    res.status(404).json({ password: '密码错误！' })
+                }
+            });
+        }
+    )
+})
+
+
 
 module.exports = router

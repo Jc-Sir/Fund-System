@@ -1,0 +1,60 @@
+const express = require("express");
+const router = express.Router();
+const passport = require('passport')
+
+const Profile = require('./../../models/Profile')
+
+// 测试接口
+router.get('/test', (req, res) => {
+    res.json('test12312')
+})
+
+// @router  Post 
+// @desc  add infomation
+// @access private
+router.post('/add', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const ProfileFields = {};
+    if (req.body.type) ProfileFields.type = req.body.type;
+    if (req.body.decribe) ProfileFields.decribe = req.body.decribe;
+    if (req.body.income) ProfileFields.income = req.body.income;
+    if (req.body.expand) ProfileFields.expand = req.body.expand;
+    if (req.body.cash) ProfileFields.cash = req.body.cash;
+    if (req.body.remark) ProfileFields.remark = req.body.remark;
+    new Profile(ProfileFields).save().then(profile => {
+        res.json(profile)
+    })
+})
+
+// @router  get 
+// @desc   get all information
+// @access private
+router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Profile.find()
+        .then(profile => {
+            if (!profile) {
+                return res.status(404).json('没有任何内容');
+            }
+            res.json(profile)
+        })
+        .catch(err => {
+            res.status(404).json(err)
+        })
+})
+
+// @router  get 
+// @desc   get single information
+// @access private
+router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Profile.findOne({ _id: req.params.id })
+        .then(profile => {
+            if (!profile) {
+                return res.status(404).json('没有任何内容');
+            }
+            res.json(profile)
+        })
+        .catch(err => {
+            res.status(404).json(err)
+        })
+})
+
+module.exports = router

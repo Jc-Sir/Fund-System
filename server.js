@@ -6,7 +6,7 @@ const passport = require('passport')
 
 // require user.js
 const users = require('./routes/api/users');
-
+const profiles = require('./routes/api/profile');
 
 // DB config
 const db = require("./config/config").mongodbURI // 数据库地址
@@ -29,10 +29,11 @@ mongoose.connect(db, {
 
 // use routes
 app.use('/api/users', users);
+app.use('/api/profile', profiles)
+
 require('./config/passport')(passport);
 
 const port = process.env.PORT || 5000;
-
 
 app.listen(port, () => {
     console.log(`server is running on port ${port}`);

@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
-const passport = require('passport')
+const passport = require('passport');
 const gravatar = require('gravatar');
 const keys = require('../../config/config');
 const User = require('../../models/User') //引入数据模型
@@ -83,7 +83,6 @@ router.post("/login", (req, res) => {
     )
 })
 
-
 // 使用令牌获取数据
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
@@ -94,7 +93,6 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
         avatar: req.user.avatar
     })
 })
-
 
 
 module.exports = router

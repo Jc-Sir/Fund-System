@@ -6,8 +6,6 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport')
 const gravatar = require('gravatar');
 const keys = require('../../config/config');
-
-
 const User = require('../../models/User') //引入数据模型
 
 // $router post api/users/register
@@ -20,7 +18,7 @@ router.post("/register", (req, res) => {
             if (user) {
                 return res.status(400).json('邮箱已经被注册')
             } else {
-                const avatar = gravatar.url(req.body.email, { s: '200', r: 'pg', d: 'mm' });
+                const avatar = gravatar.url(req.body.email, { s: '200', r: 'pg', d: 'retro' });
                 const newUser = new User({
                     name: req.body.name,
                     email: req.body.email,
@@ -92,7 +90,8 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
         id: req.user.id,
         name: req.user.name,
         email: req.user.email,
-        identity: req.user.identity
+        identity: req.user.identity,
+        avatar: req.user.avatar
     })
 })
 

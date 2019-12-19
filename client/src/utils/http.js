@@ -24,6 +24,9 @@ axios.interceptors.request.use(
             config.headers.Authorization = sessionStorage.eleToken;
         }
         return config;
+    },
+    error => {
+        return Promise.reject(error)
     }
 )
 

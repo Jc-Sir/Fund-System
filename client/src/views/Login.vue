@@ -54,7 +54,6 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-        login(this.loginUser).then(res=>{
             login(this.loginUser).then(res=>{
             // 登录成功
             const { token } = res.data;
@@ -70,7 +69,7 @@ export default {
             // 页面跳转
             this.$router.push("/index");
           })
-        } else {
+        }else {
           console.log("error submit!!");
           return false;
         }

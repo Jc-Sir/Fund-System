@@ -4,7 +4,7 @@ import router from './router/index'
 import store from './store/index'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import axios from './utils/http'
+import axios from 'axios'
 
 Vue.use(ElementUI)
 

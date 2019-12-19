@@ -40,7 +40,7 @@ export default {
             type: "email",
             required: true,
             message: "邮箱格式不正确",
-            trigger: "change"
+            trigger: "blur"
           }
         ],
         password: [

@@ -46,13 +46,16 @@ router.post('/edit/:id', passport.authenticate('jwt', { session: false }), (req,
 // @router  Post 
 // @desc  delete infomation
 // @access private
-router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Profile.findOneAndRemove({ _id: req.params.id })
+router.post('/delete/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log(req.body.id)
+    const id = req.body.id;
+    Profile.findOneAndRemove({ _id: id })
         .then(profile => {
             profile.save().then(profile => {
                 res.json(profile)
             })
-        }).catch(err => {
+        })
+        .catch(err => {
             res.status(400).json(err)
         })
 })

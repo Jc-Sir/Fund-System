@@ -18,7 +18,7 @@ function endLoading() {
 
 const service = axios.create({
     // baseURL:'',
-    timeout:2000
+    timeout: 2000
 })
 
 service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -73,8 +73,8 @@ service.interceptors.response.use(
 export function get(url, params = {}) {
     return new Promise((resolve, reject) => {
         service.get(url, {
-            params: params
-        })
+                params: params
+            })
             .then(response => {
                 resolve(response)
             })
@@ -100,5 +100,7 @@ export function post(url, data = {}) {
             })
     })
 }
+
+
 
 // export default axios

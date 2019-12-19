@@ -16,8 +16,15 @@ function endLoading() {
     loading.close();
 }
 
+const service = axios.create({
+    // baseURL:'',
+    timeout:2000
+})
+
+service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+
 // request
-axios.interceptors.request.use(
+service.interceptors.request.use(
     config => {
         startLoading();
         if (sessionStorage.eleToken) {
@@ -33,7 +40,7 @@ axios.interceptors.request.use(
 
 
 // response 
-axios.interceptors.response.use(
+service.interceptors.response.use(
     response => {
         endLoading();
         return response;
@@ -54,6 +61,7 @@ axios.interceptors.response.use(
         return Promise.reject(error);
     }
 )
+
 
 /**
  * 封装get方法

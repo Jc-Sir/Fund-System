@@ -28,7 +28,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res)
 // @router  Post 
 // @desc  edit infomation
 // @access private
-router.post('/edit/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post('/edit', passport.authenticate('jwt', { session: false }), (req, res) => {
     const ProfileFields = {};
     if (req.body.type) ProfileFields.type = req.body.type;
     if (req.body.decribe) ProfileFields.decribe = req.body.decribe;
@@ -37,7 +37,7 @@ router.post('/edit/:id', passport.authenticate('jwt', { session: false }), (req,
     if (req.body.cash) ProfileFields.cash = req.body.cash;
     if (req.body.remark) ProfileFields.remark = req.body.remark;
 
-    Profile.findOneAndUpdate({ _id: req.params.id }, { $set: ProfileFields }, { new: true })
+    Profile.findOneAndUpdate({ _id: req.body.id }, { $set: ProfileFields }, { new: true })
         .then(profile => {
             res.json(profile)
         })
@@ -46,8 +46,7 @@ router.post('/edit/:id', passport.authenticate('jwt', { session: false }), (req,
 // @router  Post 
 // @desc  delete infomation
 // @access private
-router.post('/delete/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    console.log(req.body.id)
+router.post('/delete', passport.authenticate('jwt', { session: false }), (req, res) => {
     const id = req.body.id;
     Profile.findOneAndRemove({ _id: id })
         .then(profile => {

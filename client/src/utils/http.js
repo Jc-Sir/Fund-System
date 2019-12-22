@@ -44,10 +44,8 @@ service.interceptors.response.use(
     response => {
         endLoading();
         return response;
-
     },
     error => {
-        Message.error(error.response.data);
 
         // 获取错误码
         const { status } = error.response;

@@ -14,3 +14,13 @@ export function get_profile_list(params) {
 export function delete_profile(params) {
     return post('/api/profile/delete', params)
 }
+
+// 新增数据
+export function add_profile(params) {
+    return post('/api/profile/add', params)
+}
+
+// 编辑数据
+export function edit_profile(params) {
+    return post('/api/profile/edit', params)
+}

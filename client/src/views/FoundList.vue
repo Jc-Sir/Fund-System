@@ -97,7 +97,7 @@ export default {
       dialog: {
         show: false,
         title: "",
-        option: "edit"
+        option: ""
       },
       form: {
         type: "",
@@ -161,10 +161,6 @@ export default {
         this.$message("删除成功");
         this.getProfile();
       });
-      // this.$axios.delete(`/api/profile/delete/${row._id}`).then(res => {
-      //   this.$message("删除成功");
-      //   this.getProfile();
-      // });
     },
     onAddMoney() {
       // 添加

@@ -40,11 +40,7 @@
 
         <el-table-column prop="expand" label="支出" align="center" min-width="100"></el-table-column>
 
-        <el-table-column prop="cash" label="账户现金" align="center" min-width="100">
-          <template slot-scope="scope">
-            <span style="color:#4db3ff">{{ scope.row.cash }}</span>
-          </template>
-        </el-table-column>
+        <el-table-column prop="cash" label="账户现金" align="center" min-width="100"></el-table-column>
 
         <el-table-column prop="remark" label="备注" align="center" width="220"></el-table-column>
 

@@ -34,8 +34,8 @@
             <el-input type="income" v-model="form.income"></el-input>
           </el-form-item>
 
-          <el-form-item prop="expend" label="支出:">
-            <el-input type="expend" v-model="form.expend"></el-input>
+          <el-form-item prop="expand" label="支出:">
+            <el-input type="expand" v-model="form.expand"></el-input>
           </el-form-item>
 
           <el-form-item prop="cash" label="账户现金:">
@@ -81,7 +81,7 @@ export default {
         income: [
           { required: true, message: "收入不能为空！", trigger: "blur" }
         ],
-        expend: [
+        expand: [
           { required: true, message: "支出不能为空！", trigger: "blur" }
         ],
         cash: [{ required: true, message: "账户不能为空！", trigger: "blur" }]
@@ -93,8 +93,6 @@ export default {
       this.$refs[form].validate(valid => {
         if (valid) {
           //表单数据验证完成之后，提交数据;
-          const url = this.dialog.option == "add" ? "add" : `edit`;
-
           if (this.dialog.option == "add") {
             add_profile(this.form).then(res => {
               if (res.status == "200") {
@@ -107,6 +105,7 @@ export default {
               }
             });
           } else if(this.dialog.option == "edit") {
+            console.log(this.form)
             edit_profile(this.form).then(res => {
               if (res.status == "200") {
                 this.$message({
@@ -118,17 +117,6 @@ export default {
               }
             });
           }
-
-          add_profile(this.form).then(res => {
-            if (res.status == "200") {
-              this.$message({
-                message: "保存成功！",
-                type: "success"
-              });
-              this.dialog.show = true;
-              this.$emit("update");
-            }
-          });
         }
       });
     }

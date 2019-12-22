@@ -15,7 +15,7 @@ router.get('/test', (req, res) => {
 router.post('/add', passport.authenticate('jwt', { session: false }), (req, res) => {
     const ProfileFields = {};
     if (req.body.type) ProfileFields.type = req.body.type;
-    if (req.body.decribe) ProfileFields.decribe = req.body.decribe;
+    if (req.body.describe) ProfileFields.describe = req.body.describe;
     if (req.body.income) ProfileFields.income = req.body.income;
     if (req.body.expand) ProfileFields.expand = req.body.expand;
     if (req.body.cash) ProfileFields.cash = req.body.cash;
@@ -31,7 +31,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res)
 router.post('/edit', passport.authenticate('jwt', { session: false }), (req, res) => {
     const ProfileFields = {};
     if (req.body.type) ProfileFields.type = req.body.type;
-    if (req.body.decribe) ProfileFields.decribe = req.body.decribe;
+    if (req.body.describe) ProfileFields.describe = req.body.describe;
     if (req.body.income) ProfileFields.income = req.body.income;
     if (req.body.expand) ProfileFields.expand = req.body.expand;
     if (req.body.cash) ProfileFields.cash = req.body.cash;

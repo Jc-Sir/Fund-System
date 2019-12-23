@@ -85,6 +85,10 @@ export default {
 .logo-container {
   line-height: 60px;
   min-width: 400px;
+  
+}
+.logo-container img{
+  border-radius: 50%;
 }
 .logo {
   height: 50px;

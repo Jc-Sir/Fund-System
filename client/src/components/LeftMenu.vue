@@ -1,43 +1,47 @@
 <template>
-    <el-row class="menu_page">
-         <el-col>
-             <el-menu
-                mode="vertical"
-                background-color="#324057"
-                text-color="#fff"
-                active-text-color="#409eff" 
-                class="el-menu-vertical-demo">
-                <router-link to="/home">
-                    <el-menu-item index="0">
-                        <i class="fa fa-margin fa-server"></i>
-                        <span slot="title">首页</span>
-                    </el-menu-item>
-                </router-link>
-                <template  v-for="item in items" >
-                    <el-submenu v-if="item.children" :index="item.path" :key="item.path">
-                        <template slot="title">
-                            <i :class="'fa fa-margin '+item.icon"></i>
-                            <span slot="title">{{item.name}}</span>
-                        </template>
-                        <router-link v-for="(citem,cindex) in item.children" 
-                            :to="citem.path" :key="cindex">
-                            <el-menu-item 
-                                :index='citem.path'>
-                                <span slot="title">{{citem.name}}</span>
-                            </el-menu-item> 
-                        </router-link>
-                    </el-submenu>
-                    
-                </template>
-             </el-menu>
-         </el-col>
-    </el-row>
+  <el-row class="menu_page">
+    <el-col>
+      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+        <el-radio-button :label="false">开</el-radio-button>
+        <el-radio-button :label="true">关</el-radio-button>
+      </el-radio-group>
+      <el-menu
+        mode="vertical"
+        background-color="#324057"
+        text-color="#fff"
+        active-text-color="#409eff"
+        class="el-menu-vertical-demo"
+        :collapse="isCollapse"
+      >
+        <router-link to="/home">
+          <el-menu-item index="0">
+            <i class="fa fa-margin fa-server"></i>
+            <span slot="title">首页</span>
+          </el-menu-item>
+        </router-link>
+        <template v-for="item in items">
+          <el-submenu v-if="item.children" :index="item.path" :key="item.path">
+            <template slot="title">
+              <i :class="'fa fa-margin '+item.icon"></i>
+              <span slot="title">{{item.name}}</span>
+            </template>
+            <router-link v-for="(citem,cindex) in item.children" :to="citem.path" :key="cindex">
+              <el-menu-item :index="citem.path">
+                <span slot="title">{{citem.name}}</span>
+              </el-menu-item>
+            </router-link>
+          </el-submenu>
+        </template>
+      </el-menu>
+    </el-col>
+  </el-row>
 </template>
 <script>
 export default {
   name: "leftmenu",
   data() {
     return {
+      isCollapse: true,
       items: [
         {
           icon: "fa-money",
@@ -50,6 +54,12 @@ export default {
           name: "信息管理",
           path: "info",
           children: [{ path: "infoshow", name: "个人信息" }]
+        },
+        {
+          icon: "fa-asterisk",
+          name: "ChartDemo",
+          path: "chartdemo",
+          children: [{ path: "chartdemo", name: "ChartDemo" }]
         }
       ]
     };
@@ -58,9 +68,10 @@ export default {
 </script>
 <style scoped>
 .menu_page {
-  position: fixed;
+  position: absolute;
   top: 71px;
   left: 0;
+  width: 180px;
   min-height: 100%;
   background-color: #324057;
   z-index: 99;

@@ -1,10 +1,10 @@
 <template>
   <el-row class="menu_page">
     <el-col>
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+      <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
         <el-radio-button :label="false">开</el-radio-button>
         <el-radio-button :label="true">关</el-radio-button>
-      </el-radio-group>
+      </el-radio-group> -->
       <el-menu
         mode="vertical"
         background-color="#324057"
@@ -41,7 +41,7 @@ export default {
   name: "leftmenu",
   data() {
     return {
-      isCollapse: true,
+      isCollapse: false,
       items: [
         {
           icon: "fa-money",

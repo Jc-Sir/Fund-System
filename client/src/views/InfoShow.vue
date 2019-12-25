@@ -34,9 +34,8 @@ export default {
 <style scoped>
 .infoshow {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   box-sizing: border-box;
-  /* padding: 16px; */
 }
 .row-bg {
   width: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <h1>顶部导航栏</h1>
+    
   </div>
 </template>
 

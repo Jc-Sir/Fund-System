@@ -18,7 +18,7 @@ const routes = [
     { path: '/register', name: 'register', component: Register },
     { path: '/login', name: 'login', component: Login },
     {
-        path: '/index',
+        path: '/',
         name: 'index',
         component: Index,
         children: [
@@ -30,11 +30,19 @@ const routes = [
         ]
     },
 
-    {
-        path: '/',
-        name: 'Dashboard',
-        component: Dashboard
-    }
+    // {
+    //     path: '/',
+    //     name: 'Dashboard',
+    //     component: Dashboard
+    // },
+    // {
+    //     path: '/fund',
+    //     name: 'Fund',
+    //     component: Dashboard,
+    //     children: [
+    //         { path: 'index', name: 'foundlist', component: FoundList },
+    //     ]
+    // }
 
 ]
 

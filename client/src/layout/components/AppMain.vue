@@ -1,6 +1,8 @@
 <template>
   <section class="app-main">
-    <h1>内容区域</h1>
+    <div class="app-container">
+      <router-view :key="key" />
+    </div>
   </section>
 </template>
 
@@ -8,6 +10,11 @@
 export default {
   data() {
     return {};
+  },
+  computed: {
+    key() {
+      return this.$route.path;
+    }
   }
 };
 </script>

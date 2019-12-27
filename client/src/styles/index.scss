@@ -27,6 +27,11 @@ body {
   *:after {
     box-sizing: inherit;
   }
+
+  *{
+      margin: 0;
+      padding: 0;
+  }
   
   .no-padding {
     padding: 0px !important;
@@ -114,3 +119,10 @@ body {
       }
     }
   }
+
+  
+//main-container全局样式
+.app-container {
+    padding: 20px;
+  }
+  

@@ -17,32 +17,32 @@ const routes = [
     { path: '*', name: '/404', component: NotFound },
     { path: '/register', name: 'register', component: Register },
     { path: '/login', name: 'login', component: Login },
-    {
-        path: '/',
-        name: 'index',
-        component: Index,
-        children: [
-            { path: '', component: Home },
-            { path: '/home', name: 'home', component: Home },
-            { path: '/infoshow', name: 'infoshow', component: InfoShow },
-            { path: '/foundlist', name: 'foundlist', component: FoundList },
-            { path: '/chartdemo', name: 'ChartDemo', component: ChartDemo },
-        ]
-    },
+    // {
+    //     path: '/',
+    //     name: 'index',
+    //     component: Index,
+    //     children: [
+    //         { path: '', component: Home },
+    //         { path: '/home', name: 'home', component: Home },
+    //         { path: '/infoshow', name: 'infoshow', component: InfoShow },
+    //         { path: '/foundlist', name: 'foundlist', component: FoundList },
+    //         { path: '/chartdemo', name: 'ChartDemo', component: ChartDemo },
+    //     ]
+    // },
 
     // {
     //     path: '/',
     //     name: 'Dashboard',
     //     component: Dashboard
     // },
-    // {
-    //     path: '/fund',
-    //     name: 'Fund',
-    //     component: Dashboard,
-    //     children: [
-    //         { path: 'index', name: 'foundlist', component: FoundList },
-    //     ]
-    // }
+    {
+        path: '/',
+        name: 'Fund',
+        component: Dashboard,
+        children: [
+            { path: 'index', name: 'foundlist', component: FoundList ,meta:{}},
+        ]
+    }
 
 ]
 

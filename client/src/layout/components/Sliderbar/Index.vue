@@ -32,20 +32,10 @@ export default {
       isCollapse: false,
       permission_routes: [
         {
-          path: "/redirect",
-          hidden: true,
-          children: [{ path: "/redirect/:path*" }]
-        },
-        { path: "/login", hidden: true },
-        { path: "/auth-redirect", hidden: true },
-        { path: "/404", hidden: true },
-        { path: "/401", hidden: true },
-        {
           path: "/",
-          redirect: "/dashboard",
           children: [
             {
-              path: "dashboard",
+              path: "index",
               name: "Dashboard",
               meta: { title: "Dashboard", icon: "dashboard", affix: true }
             }
@@ -78,12 +68,11 @@ export default {
         },
         {
           path: "/excel",
-          redirect: "/excel/export-excel",
           name: "Excel",
           meta: { title: "Excel", icon: "excel" },
           children: [
             {
-              path: "export-excel",
+              path: "index",
               name: "ExportExcel",
               meta: { title: "Export Excel" }
             },

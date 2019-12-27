@@ -8,12 +8,12 @@ import Home from '../views/Home'
 import InfoShow from '../views/InfoShow'
 import FoundList from '../views/FoundList'
 import ChartDemo from '../views/charts/Index'
-
+import Dashboard from '@/layout/Index.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-    { path: '/', redirect: '/index' },
+    // { path: '/', redirect: '/index' },
     { path: '*', name: '/404', component: NotFound },
     { path: '/register', name: 'register', component: Register },
     { path: '/login', name: 'login', component: Login },
@@ -26,9 +26,15 @@ const routes = [
             { path: '/home', name: 'home', component: Home },
             { path: '/infoshow', name: 'infoshow', component: InfoShow },
             { path: '/foundlist', name: 'foundlist', component: FoundList },
-            { path: '/chartdemo', name: 'ChartDemo', component: ChartDemo },            
+            { path: '/chartdemo', name: 'ChartDemo', component: ChartDemo },
         ]
     },
+
+    {
+        path: '/',
+        name: 'Dashboard',
+        component: Dashboard
+    }
 
 ]
 

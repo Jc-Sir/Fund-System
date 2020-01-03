@@ -2,8 +2,12 @@ const path = require('path')
 const debug = process.env.NODE_ENV !== 'production'
 
 function resolve(dir) {
-  return path.join(__dirname, '.', dir)
+    return path.join(__dirname, '.', dir)
 }
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const productionGzipExtensions = ['js', 'css'];
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
     publicPath: '/', // 根域上下文目录
     outputDir: 'dist', // 构建输出目录
@@ -26,6 +30,15 @@ module.exports = {
         //         }
         //     }
         // })
+        if (isProduction) {
+            config.plugins.push(new CompressionWebpackPlugin({
+                algorithm: 'gzip',
+                test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+                threshold: 10240,
+                minRatio: 0.8
+            }))
+        }
+
     },
     chainWebpack: config => { // webpack链接API，用于生成和修改webapck配置，https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
         // if (debug) {

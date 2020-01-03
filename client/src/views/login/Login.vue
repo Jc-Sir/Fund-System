@@ -26,13 +26,13 @@
             <router-link to="/register">注册</router-link>
           </p>
         </div>
-        <svg-icon icon-class="home" />
       </el-form>
     </section>
   </div>
 </template>
 
 <script>
+import "@/icons/svg/home.svg"
 import { login } from "@/api/api";
 import jwt_decode from "jwt-decode";
 

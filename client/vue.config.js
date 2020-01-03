@@ -1,6 +1,9 @@
 const path = require('path')
 const debug = process.env.NODE_ENV !== 'production'
 
+function resolve(dir) {
+  return path.join(__dirname, '.', dir)
+}
 module.exports = {
     publicPath: '/', // 根域上下文目录
     outputDir: 'dist', // 构建输出目录
@@ -25,11 +28,23 @@ module.exports = {
         // })
     },
     chainWebpack: config => { // webpack链接API，用于生成和修改webapck配置，https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-        if (debug) {
-            // 本地开发配置
-        } else {
-            // 生产开发配置
-        }
+        // if (debug) {
+        //     // 本地开发配置
+        // } else {
+        //     // 生产开发配置
+        // }
+        config.module.rules.delete("svg"); //重点:删除默认配置中处理svg,
+        config.module
+            .rule('svg-sprite-loader')
+            .test(/\.svg$/)
+            .include
+            .add(resolve('src/icons')) //处理svg目录
+            .end()
+            .use('svg-sprite-loader')
+            .loader('svg-sprite-loader')
+            .options({
+                symbolId: 'icon-[name]'
+            })
     },
     parallel: require('os').cpus().length > 1, // 构建时开启多进程处理babel编译
     pluginOptions: { // 第三方插件配置
@@ -52,6 +67,6 @@ module.exports = {
                 }
             }
         },
-        before: app => {}
+        before: app => { }
     }
 }

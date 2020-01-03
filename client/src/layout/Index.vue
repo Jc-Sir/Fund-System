@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="classObj">
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <navbar />
@@ -21,6 +21,17 @@ export default {
   },
   data() {
     return {};
+  },
+  computed: {
+    isfold(){
+      return this.$store.state.isfold;
+    },
+    classObj() {
+      return {
+        hideSidebar: !this.isfold,
+        openSidebar: this.isfold,
+      };
+    }
   }
 };
 </script>

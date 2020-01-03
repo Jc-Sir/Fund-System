@@ -29,7 +29,8 @@ export default {
   components: { SidebarItem },
   data() {
     return {
-      isCollapse: false,
+      // isCollapse: false,
+
       permission_routes: [
         {
           path: "/",
@@ -62,14 +63,14 @@ export default {
             {
               path: "index",
               name: "Guide",
-              meta: { title: "Guide", icon: "guide", noCache: true }
+              meta: { title: "Guide", icon: "home", noCache: true }
             }
           ]
         },
         {
           path: "/excel",
           name: "Excel",
-          meta: { title: "Excel", icon: "excel" },
+          meta: { title: "Excel", icon: "zip" },
           children: [
             {
               path: "index",
@@ -116,16 +117,6 @@ export default {
         },
         { path: "/pdf/download", hidden: true },
         {
-          path: "/theme",
-          children: [
-            {
-              path: "index",
-              name: "Theme",
-              meta: { title: "Theme", icon: "theme" }
-            }
-          ]
-        },
-        {
           path: "/clipboard",
           children: [
             {
@@ -150,6 +141,9 @@ export default {
   },
 
   computed: {
+    isCollapse() {
+      return this.$store.state.isfold;
+    },
     variables() {
       return variables;
     },

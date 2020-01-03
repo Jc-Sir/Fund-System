@@ -10,13 +10,17 @@ const types = {
 
 const state = {
     isAutnenticated: false, // 是否认证
-    user: {} // 存储用户信息
+    user: {}, // 存储用户信息
+    isfold:true, // 是否展开侧边栏
 }
 const getters = {
     isAutnenticated: state => state.isAutnenticated,
     user: state => state.user
 }
 const mutations = {
+    TOGGLE_SIDEBAR:state=>{
+        state.isfold = !state.isfold
+    },
     [types.SET_IS_AUTNENTIATED](state, isAutnenticated) {
         if (isAutnenticated)
             state.isAutnenticated = isAutnenticated
@@ -31,6 +35,9 @@ const mutations = {
     }
 }
 const actions = {
+    toggleSideBar({ commit }) {
+        commit('TOGGLE_SIDEBAR')
+      },
     setIsAutnenticated: ({ commit }, isAutnenticated) => {
         commit(types.SET_IS_AUTNENTIATED, isAutnenticated)
     },

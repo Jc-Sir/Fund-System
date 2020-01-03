@@ -1,29 +1,39 @@
 <template>
-    <div class="login">
-        <section class="form_container">
-            <div class="manage_tip">
-                <span class="title">simple后台管理系统</span>
-            </div>
-            <el-form :model="loginUser" :rules="rules" ref="loginForm" class="loginForm" label-width="60px">
-                <el-form-item label="邮箱" prop="email">
-                    <el-input v-model="loginUser.email" placeholder="请输入邮箱"></el-input>
-                </el-form-item>
-                <el-form-item label="密码" prop="password">
-                    <el-input v-model="loginUser.password" placeholder="请输入密码" type="password"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary"  @click="submitForm('loginForm')" class="submit_btn">登  录</el-button>
-                </el-form-item>
-                <div class="tiparea">
-                    <p>还没有账号？现在<router-link to='/register'>注册</router-link></p>
-                </div>
-            </el-form>
-        </section>
-    </div>
+  <div class="login">
+    <section class="form_container">
+      <div class="manage_tip">
+        <span class="title">simple后台管理系统</span>
+      </div>
+      <el-form
+        :model="loginUser"
+        :rules="rules"
+        ref="loginForm"
+        class="loginForm"
+        label-width="60px"
+      >
+        <el-form-item label="邮箱" prop="email">
+          <el-input v-model="loginUser.email" placeholder="请输入邮箱"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="loginUser.password" placeholder="请输入密码" type="password"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登 录</el-button>
+        </el-form-item>
+        <div class="tiparea">
+          <p>
+            还没有账号？现在
+            <router-link to="/register">注册</router-link>
+          </p>
+        </div>
+        <svg-icon icon-class="home" />
+      </el-form>
+    </section>
+  </div>
 </template>
 
 <script>
-import { login } from '@/api/api'
+import { login } from "@/api/api";
 import jwt_decode from "jwt-decode";
 
 export default {
@@ -54,7 +64,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-            login(this.loginUser).then(res=>{
+          login(this.loginUser).then(res => {
             // 登录成功
             const { token } = res.data;
             sessionStorage.setItem("eleToken", token);
@@ -68,8 +78,8 @@ export default {
 
             // 页面跳转
             this.$router.push("/index");
-          })
-        }else {
+          });
+        } else {
           console.log("error submit!!");
           return false;
         }
@@ -99,8 +109,9 @@ export default {
   width: 370px;
   height: 210px;
   position: absolute;
-  top: 20%;
-  left: 34%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 25px;
   border-radius: 5px;
   text-align: center;

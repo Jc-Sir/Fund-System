@@ -1,20 +1,23 @@
 <template>
   <div class="navbar">
-    <div class="flod-slider-item" @click="changefold">
+    <div class="flod-slider-item flodleft" @click="changefold">
       <i :class="[isflod?'el-icon-s-fold':'el-icon-s-unfold']"></i>
     </div>
+    <screen-full id="screen-full"></screen-full>
   </div>
 </template>
 
 <script>
+import ScreenFull from "@/components/Screenfull";
 export default {
+  components: { ScreenFull },
   data() {
     return {
       // isflod: true
     };
   },
   computed: {
-    isflod(){
+    isflod() {
       return this.$store.state.isfold;
     }
   },
@@ -22,13 +25,24 @@ export default {
     changefold() {
       // this.isflod = !this.isflod;
       // sessionStorage.isflod = this.isflod;
-      this.$store.commit('TOGGLE_SIDEBAR')
+      this.$store.commit("TOGGLE_SIDEBAR");
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.flodleft,
+#screen-full {
+  float: left;
+}
+#screen-full {
+  width: 50px;
+  height: 50px;
+  float: right;
+  margin-right: 20px;
+  text-align: center;
+}
 .navbar {
   height: 50px;
   line-height: 50px;

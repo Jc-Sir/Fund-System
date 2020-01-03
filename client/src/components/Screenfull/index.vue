@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <i class="el-icon-rank" @click="click">全屏</i>
+  <div @click="fullclick">
+    <svg-icon :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" />
   </div>
 </template>
 
@@ -21,8 +21,8 @@ export default {
     this.destroy();
   },
   methods: {
-    click() {
-      console.log(screenfull)
+    fullclick() {
+      console.log(screenfull);
       if (!screenfull.isEnabled) {
         this.$message({
           message: "you browser can not work",
@@ -31,11 +31,13 @@ export default {
         return false;
       }
       screenfull.toggle();
+      this.isFullscreen = !this.isFullscreen ;
     },
     change() {
       this.isFullscreen = screenfull.isFullscreen;
     },
     init() {
+      console.log(screenfull.enabled)
       if (screenfull.enabled) {
         screenfull.on("change", this.change);
       }

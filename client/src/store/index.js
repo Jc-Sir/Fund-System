@@ -11,7 +11,7 @@ const types = {
 const state = {
     isAutnenticated: false, // 是否认证
     user: {}, // 存储用户信息
-    isfold:Boolean, // 是否展开侧边栏
+    isfold:false, // 是否展开侧边栏
 }
 const getters = {
     isAutnenticated: state => state.isAutnenticated,

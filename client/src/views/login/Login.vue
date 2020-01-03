@@ -76,7 +76,7 @@ export default {
             this.$store.dispatch("setUser", decode);
 
             // 页面跳转
-            this.$router.push("/index");
+            this.$router.push("/");
           });
         } else {
           console.log("error submit!!");

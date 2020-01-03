@@ -9,9 +9,9 @@ const productionGzipExtensions = ['js', 'css'];
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    publicPath: '/', // 根域上下文目录
+    publicPath: './', // 根域上下文目录
     outputDir: 'dist', // 构建输出目录
-    assetsDir: 'assets', // 静态资源目录 (js, css, img, fonts)
+    assetsDir: 'static', // 静态资源目录 (js, css, img, fonts)
     lintOnSave: false, // 是否开启eslint保存检测，有效值：ture | false | 'error'
     runtimeCompiler: true, // 运行时版本是否需要编译
     transpileDependencies: [], // 默认babel-loader忽略mode_modules，这里可增加例外的依赖包名
@@ -38,8 +38,8 @@ module.exports = {
                 minRatio: 0.8
             }))
         }
-
     },
+    
     chainWebpack: config => { // webpack链接API，用于生成和修改webapck配置，https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
         // if (debug) {
         //     // 本地开发配置
@@ -59,6 +59,7 @@ module.exports = {
                 symbolId: 'icon-[name]'
             })
     },
+
     parallel: require('os').cpus().length > 1, // 构建时开启多进程处理babel编译
     pluginOptions: { // 第三方插件配置
     },

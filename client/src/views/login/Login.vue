@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import "@/icons/svg/home.svg"
 import { login } from "@/api/api";
 import jwt_decode from "jwt-decode";
 

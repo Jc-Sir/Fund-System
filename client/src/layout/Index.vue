@@ -28,8 +28,8 @@ export default {
     },
     classObj() {
       return {
-        hideSidebar: !this.isfold,
-        openSidebar: this.isfold,
+        hideSidebar: this.isfold,
+        openSidebar: !this.isfold,
       };
     }
   }

@@ -26,7 +26,7 @@ service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencod
 // request
 service.interceptors.request.use(
     config => {
-        startLoading();
+        // startLoading();
         if (sessionStorage.eleToken) {
             config.headers.Authorization = sessionStorage.eleToken;
         }
@@ -42,16 +42,20 @@ service.interceptors.request.use(
 // response 
 service.interceptors.response.use(
     response => {
-        endLoading();
+        // endLoading();
         return response;
     },
     error => {
-
         // 获取错误码
+        console.log(error)
         const { status } = error.response;
-
         if (status == 401) {
             Message.error('Token过期,请重新登录！');
+            sessionStorage.removeItem('eleToken');
+            router.push('/login')
+        }
+        if (status == 500) {
+            Message.error('network error');
             sessionStorage.removeItem('eleToken');
             router.push('/login')
         }

@@ -30,20 +30,20 @@ const routes = [
     // },
     {
         path: '/',
-        name: 'Fund',
         component: Dashboard,
-        children: [
-            {
-                path: '',
-                name: 'foundlist',
-                component: () => import('@/views/FoundList'),
-                meta: {}
-            },
-        ]
+        children: [{
+            path: '',
+            name: 'foundlist',
+            component: () =>
+                import ('@/views/FoundList'),
+            meta: {}
+        }, ]
     },
     // { path: '*', name: '/404', component: () => import("@/views/404") },
-    { path: '/register', name: 'register', component: () => import("@/views/register/Register") },
-    { path: '/login', name: 'login', component:()=> import("@/views/login/Login") },
+    { path: '/register', name: 'register', component: () =>
+            import ("@/views/register/Register") },
+    { path: '/login', name: 'login', component: () =>
+            import ("@/views/login/Login") },
     // { path: '*', redirect: '/404', hidden: true }
 ]
 

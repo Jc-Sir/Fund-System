@@ -105,7 +105,6 @@ export default {
               }
             });
           } else if(this.dialog.option == "edit") {
-            console.log(this.form)
             edit_profile(this.form).then(res => {
               if (res.status == "200") {
                 this.$message({

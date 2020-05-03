@@ -39,7 +39,7 @@ module.exports = {
             }))
         }
     },
-    
+
     chainWebpack: config => { // webpack链接API，用于生成和修改webapck配置，https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
         // if (debug) {
         //     // 本地开发配置
@@ -81,6 +81,6 @@ module.exports = {
                 }
             }
         },
-        before: app => { }
+        before: app => {}
     }
 }

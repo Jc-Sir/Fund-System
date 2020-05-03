@@ -40,10 +40,18 @@ const routes = [
         }, ]
     },
     // { path: '*', name: '/404', component: () => import("@/views/404") },
-    { path: '/register', name: 'register', component: () =>
-            import ("@/views/register/Register") },
-    { path: '/login', name: 'login', component: () =>
-            import ("@/views/login/Login") },
+    {
+        path: '/register',
+        name: 'register',
+        component: () =>
+            import ("@/views/register/Register")
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: () =>
+            import ("@/views/login/Login")
+    },
     // { path: '*', redirect: '/404', hidden: true }
 ]
 

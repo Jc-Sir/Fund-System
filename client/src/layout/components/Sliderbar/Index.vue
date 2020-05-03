@@ -36,7 +36,7 @@ export default {
           path: "/",
           children: [
             {
-              path: "index",
+              path: "",
               name: "Dashboard",
               meta: { title: "Dashboard", icon: "dashboard", affix: true }
             }

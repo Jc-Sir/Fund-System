@@ -1,0 +1,14 @@
+{
+    "name": "fund-server",
+    "version": "1.0.0",
+    "description": "fund-server项目API文档",
+    "title": "fund-server API",
+    "url": "http://localhost:3001/v1",
+    "sampleUrl": "http://localhost:3001/v1",
+    "forceLanguage": "zh-cn",
+    "template": {
+        "withCompare": true,
+        "withGenerator": true
+    }
+
+}

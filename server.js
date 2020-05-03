@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const app = express(); // 实例化
 const passport = require('passport')
 
+
 // require user.js
 const users = require('./routes/api/users');
 const profiles = require('./routes/api/profile');
@@ -14,6 +15,7 @@ const db = require("./config/config").mongodbURI // 数据库地址
 // use body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+app.use('/apiDoc', express.static('apiDoc'));
 
 // passport 初始化
 app.use(passport.initialize());
